@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "../../../.plugins/libk4GaudiPandoraPlugins.so"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/__/Utility/MarlinUtil/01-08/source/ClusterShapes.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/__/Utility/MarlinUtil/01-08/source/ClusterShapes.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/__/Utility/MarlinUtil/01-08/source/HelixClass.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/__/Utility/MarlinUtil/01-08/source/HelixClass.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/__/Utility/MarlinUtil/01-08/source/LineClass.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/__/Utility/MarlinUtil/01-08/source/LineClass.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/CalorimeterHitType.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/CalorimeterHitType.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDBFieldPlugin.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDBFieldPlugin.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDCaloHitCreator.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDCaloHitCreator.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDGeometryCreator.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDGeometryCreator.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDMCParticleCreator.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDMCParticleCreator.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDMuonDigiSimple.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDMuonDigiSimple.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDPandoraPFANewAlgorithm.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDPandoraPFANewAlgorithm.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDPfoCreator.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDPfoCreator.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDTrackCreatorBase.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDTrackCreatorBase.cc.o.d"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDTrackCreatorCLIC.cc.o"
+  "CMakeFiles/k4GaudiPandoraPlugins.dir/src/DDTrackCreatorCLIC.cc.o.d"
+  "genConfDir/k4GaudiPandora/k4GaudiPandoraPlugins.confdb"
+  "genConfDir/k4GaudiPandora/k4GaudiPandoraPlugins.confdb2_part"
+  "genConfDir/k4GaudiPandora/k4GaudiPandoraPluginsConf.py"
+  "k4GaudiPandoraPlugins.components"
+  "libk4GaudiPandoraPlugins.pdb"
+  "libk4GaudiPandoraPlugins.so"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/k4GaudiPandoraPlugins.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

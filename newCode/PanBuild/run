@@ -1,0 +1,4 @@
+#!/bin/sh
+# Auto-generated script to set the environment before the execution of a command
+. /home/sferrar2/Mar2Gau/TrackPerfWorkspace/PanBuild/trackperfworkspaceenv.sh
+exec "$@"

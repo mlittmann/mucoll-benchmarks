@@ -1,0 +1,4 @@
+v2::libBIBKillPlugins.so:BIBKiller
+v2::libBIBKillPlugins.so:BIBKillerCalo
+v2::libBIBKillPlugins.so:BIBKillerCluster
+v2::libBIBKillPlugins.so:BIBKillerTrackHit
