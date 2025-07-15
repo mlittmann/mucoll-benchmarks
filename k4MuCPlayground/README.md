@@ -3,12 +3,12 @@ If libraries have been previously built:
 ```
 apptainer shell --cleanenv docker://ghcr.io/madbaron/mucoll-sim:master
 source source /opt/spack/opt/spack/linux-almalinux9-x86_64/gcc-11.5.0/mucoll-stack-master-fldyu2usa43rdect3x4xyibuzww5ptwz/setup.sh
-cd ../newCode
+cd /path/to/k4MuCWorkspace
 source ./setupLibraries.sh
-cd ../k4MuCPlayground
+cd /path/to/k4MuCPlayground
 ```
 
-Otherwise, first go to `/newCode/` and follow the instructions in the `README.md` to build the new libraries.
+Otherwise, first clone (k4MuCWorkspace)[https://github.com/samf25/k4MuCWorkspace] and follow the instructions in the `README.md` to build the new libraries.
 
 ##Generation
 ```
