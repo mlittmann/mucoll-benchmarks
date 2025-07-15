@@ -9,7 +9,7 @@ cd /path/to/k4MuCPlayground
 source setup_digireco.sh
 ```
 
-Otherwise, first clone (k4MuCWorkspace)[https://github.com/samf25/k4MuCWorkspace] and follow the instructions in the `README.md` to build the new libraries.
+Otherwise, first clone [k4MuCWorkspace](https://github.com/samf25/k4MuCWorkspace) and follow the instructions in the `README.md` to build the new libraries.
 
 ##Generation
 ```
