@@ -1,11 +1,14 @@
 ##Environment Setup:
+If libraries have been previously built:
 ```
 apptainer shell --cleanenv docker://ghcr.io/madbaron/mucoll-sim:master
 source source /opt/spack/opt/spack/linux-almalinux9-x86_64/gcc-11.5.0/mucoll-stack-master-fldyu2usa43rdect3x4xyibuzww5ptwz/setup.sh
 cd ../newCode
-source ../newCode/setupPandora.sh
+source ./setupLibraries.sh
 cd ../k4MuCPlayground
 ```
+
+Otherwise, first go to `/newCode/` and follow the instructions in the `README.md` to build the new libraries.
 
 ##Generation
 ```
@@ -28,3 +31,10 @@ cp -r ../reconstruction/PandoraSettings/ ./
 k4run ../reconstruction/reco_steer.py --DD4hepXMLFile /path/to/your/geometry/compact/file/of/choice/MAIA_v0.xml
 ```
 
+##Debugging
+If an issue is coming up with the steering files, the first thing to try to do is delete the __pycache__.py directory in the `/digitization/components/` and `/reconstruction/components/` directory. Then run
+```
+touch digitization/components/__init__.py
+touch reconstruction/components/__init__.py
+```
+before trying to re-run your steering file.

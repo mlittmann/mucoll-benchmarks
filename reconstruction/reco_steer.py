@@ -3,16 +3,16 @@
 '''-------------------------------------------------------------'''
 from GaudiKernel.Constants import INFO, WARNING, DEBUG
 # Collect Arguements
-from components.args import get_args
-args = get_args()
+from components.reco_args import get_reco_args
+args = get_reco_args()
 
 # Set Up Services
-from components.services import set_services
-[evtsvc, geoservice] = set_services(args)
+from components.reco_services import set_reco_services
+[evtsvc, geoservice] = set_reco_services(args)
 
 # Import the Algorithm List
-from algList import makeAlgList
-algList = makeAlgList(args)
+from recoAlgList import makeRecoAlgList
+algList = makeRecoAlgList(args)
 
 '''-------------------------------------------------------------'''
 '''    Run the Digitization Algorithms in the ApplicationMgr    '''
