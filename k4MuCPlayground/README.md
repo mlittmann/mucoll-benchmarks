@@ -6,6 +6,7 @@ source source /opt/spack/opt/spack/linux-almalinux9-x86_64/gcc-11.5.0/mucoll-sta
 cd /path/to/k4MuCWorkspace
 source ./setupLibraries.sh
 cd /path/to/k4MuCPlayground
+source setup_digireco.sh
 ```
 
 Otherwise, first clone (k4MuCWorkspace)[https://github.com/samf25/k4MuCWorkspace] and follow the instructions in the `README.md` to build the new libraries.
