@@ -3,11 +3,11 @@
 '''-------------------------------------------------------------'''
 from GaudiKernel.Constants import INFO, WARNING, DEBUG
 # Collect Arguements
-from components.reco_args import get_reco_args
+from reco_components.reco_args import get_reco_args
 args = get_reco_args()
 
 # Set Up Services
-from components.reco_services import set_reco_services
+from reco_components.reco_services import set_reco_services
 [evtsvc, geoservice] = set_reco_services(args)
 
 # Import the Algorithm List

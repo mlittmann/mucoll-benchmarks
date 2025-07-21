@@ -6,12 +6,12 @@ def makeRecoAlgList(the_args):
     '''-------------------------------------------------------------'''
     algList = []
     # Merging
-    from components.mergers import new_mergehits, new_mergehitsrelations
+    from reco_components.mergers import new_mergehits, new_mergehitsrelations
     algList.append(new_mergehits())
     algList.append(new_mergehitsrelations())
 
     # CKF Tracking
-    from components.CKF_tracking import new_CKFTracker, new_deduper, new_track_filter
+    from reco_components.CKF_tracking import new_CKFTracker, new_deduper, new_track_filter
     algList.append(new_CKFTracker(
         the_args.MatFile,
         the_args.TGeoFile))
@@ -20,12 +20,12 @@ def makeRecoAlgList(the_args):
 
     # Track Performance Monitoring
     if the_args.doTrackPerf:
-        from components.track_performance import new_trackTruth, new_trackPerf
+        from reco_components.track_performance import new_trackTruth, new_trackPerf
         algList.append(new_trackTruth())
         algList.append(new_trackPerf())
 
     # Pandora PFOs
-    from components.pandora import new_pandoraPFA
+    from reco_components.pandora import new_pandoraPFA
     algList.append(new_pandoraPFA())
 
     return algList
