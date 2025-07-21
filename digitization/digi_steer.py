@@ -3,11 +3,11 @@
 '''-------------------------------------------------------------'''
 from GaudiKernel.Constants import INFO, WARNING
 # Collect Arguements
-from components.digi_args import get_digi_args
+from digi_components.digi_args import get_digi_args
 args = get_digi_args()
 
 # Set Up Services
-from components.digi_services import set_digi_services
+from digi_components.digi_services import set_digi_services
 [evtsvc, geoservice, id_service] = set_digi_services(args)
 
 # Import the Algorithm List
