@@ -28,8 +28,8 @@ parser.add_argument('--theta', metavar='A', type=float, default=90, nargs='+',  
 
 args = parser.parse_args()
 
-from edm4hep import edm4hep
-from ROOT import podio
+import edm4hep
+import podio
 from podio.root_io import Writer
 import cppyy
 
@@ -82,16 +82,16 @@ print(f'Opening output file: {args.output}')
 
 # Writing the run headers
 frame = podio.Frame()
-frame.putParameter('pdgIds', str(args.pdg))
-frame.putParameter('events', str(args.events))
-frame.putParameter('particles/event', str(args.particles))
+frame.put_parameter('pdgIds', str(args.pdg))
+frame.put_parameter('events', str(args.events))
+frame.put_parameter('particles/event', str(args.particles))
 if args.comment:
-	frame.putParameter('comment', args.comment)
+	frame.put_parameter('comment', args.comment)
 for name, values in configs.items():
 	header = str(values) if isinstance(values, list) else values
-	frame.putParameter(name, str(header))
+	frame.put_parameter(name, str(header))
 # wrt.writeRunHeader(run)
-writer.writeFrame(frame, 'header')
+writer.write_frame(frame, 'header')
 
 # Setting counters
 n_events = 0
@@ -104,7 +104,7 @@ choose_random_pdg = True if args.particles != n_pdgs else False
 for e in range(args.events):
 	col = edm4hep.MCParticleCollection()
 	evt = podio.Frame()
-	evt.putParameter("eventNumber", str(e))
+	evt.put_parameter("eventNumber", str(e))
 
 	for p in range(args.particles):
 		pdg_idx = p
@@ -125,7 +125,7 @@ for e in range(args.events):
 			px = p * math.cos(phi) * math.sin(theta)
 			py = p * math.sin(phi) * math.sin(theta)
 			pz = p * math.cos(theta)
-		momentum = array('f', [px, py, pz])
+		momentum = array('d', [px, py, pz])
 		# Calculating vertex position
 		vx = samples['d0'][e] / 10.0 * math.cos(samples['dphi'][e])
 		vy = samples['d0'][e] / 10.0 * math.sin(samples['dphi'][e])
@@ -137,8 +137,14 @@ for e in range(args.events):
 		mcp.setMass(PDG_PROPS[pdg][1])
 		mcp.setCharge(PDG_PROPS[pdg][0])
 		mcp.setPDG(pdg)
-		mcp.setMomentum(momentum)
-		mcp.setVertex(vtx)
+		#mcp.setMomentum(momentum)
+		mcp.getMomentum().x = px
+		mcp.getMomentum().y = py
+		mcp.getMomentum().z = pz
+		#mcp.setVertex(vtx)
+		mcp.getVertex().x = vx
+		mcp.getVertex().y = vy
+		mcp.getVertex().z = vz
 		# Adding particle to the event
 		n_particles += 1
 	# Writing the event
@@ -146,8 +152,8 @@ for e in range(args.events):
 	if n_events % (args.events / 10) == 0:
 		print(f'Wrote event {n_events}/{args.events}')
 	evt.put(cppyy.gbl.std.move(col), "MCParticles")	
-	writer.writeFrame(evt, 'events')
+	writer.write_frame(evt, 'events')
 # Closing the output file
-writer.finish()
+#writer.finish()
 print(f'Wrote {n_particles} partiles in {n_events} events to file: {args.output}')
 
