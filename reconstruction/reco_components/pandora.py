@@ -94,9 +94,9 @@ def new_pandoraPFA():
         TrackCollections = ["SiTracks"],
         RelTrackCollections = ["MergedTrackerHitsRelations"],
         MCParticleCollections = ["MCParticles"],
-        MuonCaloHitCollections = ["MuonBarrelHitsKilled", "MuonEndcapHitsKilled"],
-        ECalCaloHitCollections = ["EcalBarrelCollectionRecKilled", "EcalEndcapCollectionRecKilled"],
-        HCalCaloHitCollections = ["HcalBarrelCollectionRecKilled", "HcalEndcapCollectionRecKilled"],
+        MuonCaloHitCollections = ["MuonBarrelHits", "MuonEndcapHits"],
+        ECalCaloHitCollections = ["EcalBarrelCollectionRec", "EcalEndcapCollectionRec"],
+        HCalCaloHitCollections = ["HcalBarrelCollectionRec", "HcalEndcapCollectionRec"],
         RelCaloHitCollections = [
             "EcalBarrelRelationsSimRec", "EcalEndcapRelationsSimRec",
             "HcalBarrelRelationsSimRec", "HcalEndcapRelationsSimRec",

@@ -1,5 +1,5 @@
 from GaudiKernel.Constants import INFO, WARNING, DEBUG
-from Configurables import ACTSSeededCKFTrackingAlg, ACTSDuplicateRemoval, FilterTracksAlg
+from Configurables import ACTSSeededCKFTrackingAlg, ACTSDuplicateRemoval, FilterTracksAlg, TrackTruthAlg, RefitFinal
 
 def new_CKFTracker(matFile, TGeoFile):
     """
@@ -53,5 +53,40 @@ def new_track_filter():
         NHitsTotal = "6",
         NHitsVertex = "0",
         OutputTrackCollectionName = ["SiTracks"],
+        OutputLevel = INFO
+    )
+
+def new_track_truth():
+    """
+    Create a new TrackTruth instance for track truth matching.
+    """
+    return TrackTruthAlg(
+        "TruthMatcher",
+        InputTrackCollectionName = ["SiTracks"],
+        InputTrackerHit2SimTrackerHitRelationName = ["MergedTrackerHitsRelations"],
+        OutputParticle2TrackRelationName = ["SiTrackRelations"],
+        OutputLevel = INFO
+    )
+
+def new_track_refitter():
+    """
+    Create a new TrackRefitter instance for refitting tracks.
+    """
+    return RefitFinal(
+        "Refitter",
+#        DoCutsOnRedChi2Nhits = True,
+        EnergyLossOn = True,
+        InputRelationCollectionName = ["SiTrackRelations"],
+        InputTrackCollectionName = ["SiTracks"],
+        Max_Chi2_Incr = 1.79769e+30,
+        MinClustersOnTrackAfterFit = 3,
+        MultipleScatteringOn = True,
+#        NHitsCuts = ["1,2", "1", "3,4", "1", "5,6", "0"],
+        OutputRelationCollectionName = ["SiTracks_Refitted_Relation"],
+        OutputTrackCollectionName = ["SiTracks_Refitted"],
+#        ReducedChi2Cut = 10.,
+        ReferencePoint = -1,
+        SmoothOn = False,
+        extrapolateForward = True,
         OutputLevel = INFO
     )
