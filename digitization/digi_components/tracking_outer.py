@@ -20,7 +20,7 @@ def new_OTBarrel(args):
         TimeWindowMax = [0.3],
         TimeWindowMin = [-0.18],
         UseTimeWindow = True,
-        SimTrackerHitCollectionName = inputHitCollections,
+        SimTrackHitCollectionName = inputHitCollections,
         SimTrkHitRelCollection = ["OTBarrelHitsRelations"],
         TrackerHitCollectionName = ["OTBarrelHits"],
         OutputLevel = INFO
@@ -45,7 +45,7 @@ def new_OTEndcap(args):
         TimeWindowMax = [0.3],
         TimeWindowMin = [-0.18],
         UseTimeWindow = True,
-        SimTrackerHitCollectionName = inputHitCollections,
+        SimTrackHitCollectionName = inputHitCollections,
         SimTrkHitRelCollection = ["OTEndcapHitsRelations"],
         TrackerHitCollectionName = ["OTEndcapHits"],
         OutputLevel = INFO

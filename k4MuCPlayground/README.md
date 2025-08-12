@@ -13,12 +13,12 @@ Otherwise, first clone [k4MuCWorkspace](https://github.com/samf25/k4MuCWorkspace
 
 ##Generation
 ```
-python ../generation/pgun/pgun_lcio.py -p 1 -e 1 --pdg 11 --pt 100 --theta 10 170 -- gen_output.slcio
+python ../generation/pgun/pgun_edm4hep.py -p 1 -e 1 --pdg 11 --pt 100 --theta 10 170 -- gen_output.edm4hep.root
 ```
 
 ##Simulation
 ```
-ddsim --steeringFile ../simulation/steer_baseline.py --inputFile gen_output.slcio --outputFile sim_output.edm4hep.root --compactFile /path/to/your/geometry/compact/file/of/choice/MAIA_v0.xml
+ddsim --steeringFile ../simulation/steer_baseline.py --inputFile gen_output.edm4hep.root --outputFile sim_output.edm4hep.root --compactFile /path/to/your/geometry/compact/file/of/choice/MAIA_v0.xml
 ```
 
 ##Digitization

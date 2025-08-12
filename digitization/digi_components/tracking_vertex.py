@@ -20,7 +20,7 @@ def new_VXDBarrel(args):
         TimeWindowMax = [0.15],
         TimeWindowMin = [-0.09],
         UseTimeWindow = True,
-        SimTrackerHitCollectionName = inputHitCollections,
+        SimTrackHitCollectionName = inputHitCollections,
         SimTrkHitRelCollection = ["VXDBarrelHitsRelations"],
         TrackerHitCollectionName = ["VXDBarrelHits"],
         OutputLevel = INFO
@@ -45,7 +45,7 @@ def new_VXDEndcap(args):
         TimeWindowMax = [0.15],
         TimeWindowMin = [-0.09],
         UseTimeWindow = True,
-        SimTrackerHitCollectionName = inputHitCollections,
+        SimTrackHitCollectionName = inputHitCollections,
         SimTrkHitRelCollection = ["VXDEndcapHitsRelations"],
         TrackerHitCollectionName = ["VXDEndcapHits"],
         OutputLevel = INFO

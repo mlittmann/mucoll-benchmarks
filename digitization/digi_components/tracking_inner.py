@@ -20,7 +20,7 @@ def new_ITBarrel(args):
         TimeWindowMax = [0.3],
         TimeWindowMin = [-0.18],
         UseTimeWindow = True,
-        SimTrackerHitCollectionName = inputHitCollections,
+        SimTrackHitCollectionName = inputHitCollections,
         SimTrkHitRelCollection = ["ITBarrelHitsRelations"],
         TrackerHitCollectionName = ["ITBarrelHits"],
         OutputLevel = INFO
@@ -45,7 +45,7 @@ def new_ITEndcap(args):
         TimeWindowMax = [0.3],
         TimeWindowMin = [-0.18],
         UseTimeWindow = True,
-        SimTrackerHitCollectionName = inputHitCollections,
+        SimTrackHitCollectionName = inputHitCollections,
         SimTrkHitRelCollection = ["ITEndcapHitsRelations"],
         TrackerHitCollectionName = ["ITEndcapHits"],
         OutputLevel = INFO

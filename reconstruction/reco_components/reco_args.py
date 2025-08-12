@@ -17,14 +17,14 @@ def get_reco_args():
         "--MatFile",
         help="Material maps file for tracking",
         type=str,
-        default="/opt/spack/opt/spack/linux-almalinux9-x86_64/gcc-11.5.0/actstracking-1.3.1-kunm7cmwx7eytrs7dath3cx3egcm7ifd/share/ACTSTracking/data/material-maps.json",
+        default="/opt/spack/opt/spack/__spack_path_placeholder__/__spack_path_placeholder__/__spack_path_placeholder__/__spack_path_placeholder__/linux-x86_64/k4actstracking-main-etl5olmhzcrfyt44xfj3kmabw5bfnspw/share/ACTSTracking/data/material-maps.json",
     )
 
     parser.add_argument(
         "--TGeoFile",
         help="TGeometry file for tracking",
         type=str,
-        default="/opt/spack/opt/spack/linux-almalinux9-x86_64/gcc-11.5.0/actstracking-1.3.1-kunm7cmwx7eytrs7dath3cx3egcm7ifd/share/ACTSTracking/data/MuColl_v1.root",
+        default="/opt/spack/opt/spack/__spack_path_placeholder__/__spack_path_placeholder__/__spack_path_placeholder__/__spack_path_placeholder__/linux-x86_64/k4actstracking-main-etl5olmhzcrfyt44xfj3kmabw5bfnspw/share/ACTSTracking/data/MAIA_v0.root",
     )
 
     parser.add_argument(
