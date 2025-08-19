@@ -34,7 +34,7 @@ def new_ECalBarrelReco():
     return RealisticCaloRecoSilicon(
         "ECalBarrelReco",
         calibration_factorsMipGev = [0.00641222630095],
-        calibration_layergroups = [41],
+        calibration_layergroups = [50],
         inputLinkCollections = ["EcalBarrelRelationsSimDigi"],
         outputHitCollections = ["EcalBarrelCollectionRec"],
         outputRelationCollections = ["EcalBarrelRelationsSimRec"],
@@ -74,7 +74,7 @@ def new_ECalPlugReco():
     return RealisticCaloRecoSilicon(
         "ECalPlugReco",
         calibration_factorsMipGev = [0.00641222630095],
-        calibration_layergroups = [41],
+        calibration_layergroups = [50],
         inputLinkCollections = ["ECalPlugRelationsSimDigi"],
         outputHitCollections = ["ECalPlugCollectionRec"],
         outputRelationCollections = ["ECalPlugRelationsSimRec"],
@@ -114,7 +114,7 @@ def new_ECalEndcapReco():
     return RealisticCaloRecoSilicon(
         "ECalEndcapReco",
         calibration_factorsMipGev = [0.00641222630095],
-        calibration_layergroups = [41],
+        calibration_layergroups = [50],
         inputLinkCollections = ["EcalEndcapRelationsSimDigi"],
         outputHitCollections = ["EcalEndcapCollectionRec"],
         outputRelationCollections = ["EcalEndcapRelationsSimRec"],
