@@ -27,7 +27,8 @@ def makeRecoAlgList(the_args):
         algList.append(new_trackPerf())
 
     # Pandora PFOs
-    from reco_components.pandora import new_pandoraPFA
+    from reco_components.pandora import new_pandoraPFA, new_fastJet
     algList.append(new_pandoraPFA())
+    algList.append(new_fastJet())
 
     return algList
