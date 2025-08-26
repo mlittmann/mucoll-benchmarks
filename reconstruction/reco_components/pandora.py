@@ -1,5 +1,5 @@
 from GaudiKernel.Constants import INFO, WARNING, DEBUG
-from Configurables import DDPandoraPFANewAlgorithm
+from Configurables import DDPandoraPFANewAlgorithm, FastJetAlg
 
 def new_pandoraPFA():
     """
@@ -103,5 +103,16 @@ def new_pandoraPFA():
             "MuonBarrelHitsRelations", "MuonEndcapHitsRelations"],
         PFOCollectionName = ["PandoraPFOs"],
         StartVertexCollectionName = ["PandoraStartVertices"],
+        OutputLevel = INFO
+    )
+
+def new_fastJet():
+    return FastJetAlg("AntiKt FastJet",
+        algorithm = ["antikt_algorithm", "0.4"],
+        clusteringMode = ["Inclusive", "5"],
+        jetOut = ["JetOut"],
+        recParticleIn = ["PandoraPFOs"],
+        recParticleOut = ["UsedPFOs"],
+        recombinationScheme = "E_scheme",
         OutputLevel = INFO
     )
