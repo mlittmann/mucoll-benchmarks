@@ -57,5 +57,12 @@ def get_digi_args():
         action="store_true",
         default=False,
     )
+    
+    parser.add_argument(
+        "--RandSeed",
+        help="Random seed for digitization",
+        type=int,
+        default=42,
+    )
 
     return parser.parse_known_args()[0]
