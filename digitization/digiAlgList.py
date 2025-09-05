@@ -7,7 +7,7 @@ def makeDigiAlgList(the_args):
     algList = []
     # BIB Overlay
     if the_args.doOverlayFull:
-        from components.overlay_full import new_overlay_full
+        from digi_components.overlay_full import new_overlay_full
         algList.append(new_overlay_full(the_args))
 
     # Tracker Digitization
