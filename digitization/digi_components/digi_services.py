@@ -20,7 +20,7 @@ def set_digi_services(the_args):
 
     id_service = UniqueIDGenSvc(
         "UniqueIDGenSvc", 
-        Seed = 1
+        Seed = the_args.RandSeed
     )
     
     THistSvc().Output = ["histos DATAFILE='digi_histograms.root' TYP='ROOT' OPT='RECREATE'"]
