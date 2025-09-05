@@ -1,11 +1,11 @@
 from GaudiKernel.Constants import INFO, WARNING
-from Configurables import OverlayTiming
+from Configurables import OverlayTimingRandomMix
 
 def new_overlay_full(args):
     """
     Create a new overlay instance with the given parameters.
     """
-    return OverlayTiming(
+    return OverlayTimingRandomMix(
         "OverlayFull",
         BackgroundFileNames = [[args.OverlayFullPathToMuPlus], [args.OverlayFullPathToMuMinus]],
         TimeWindows = {
