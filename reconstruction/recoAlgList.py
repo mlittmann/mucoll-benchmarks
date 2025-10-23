@@ -29,6 +29,6 @@ def makeRecoAlgList(the_args):
     # Pandora PFOs
     from reco_components.pandora import new_pandoraPFA, new_fastJet
     algList.append(new_pandoraPFA())
-    algList.append(new_fastJet())
+    # algList.append(new_fastJet())
 
     return algList
