@@ -21,14 +21,12 @@ All of the Tracking geometries live in the `k4actstracking` directory (`.../shar
 ##Generation
 ```
 python ../generation/pgun/pgun_edm4hep.py \
--p 1 -e 1 --pdg 11 --pt 100 --theta 10 170 -- gen_output.edm4hep.root
+-p 1 -e 10 --pdg 11 --pt 100 --theta 10 170 -- gen_output.edm4hep.root
 ```
 
 ##Simulation
 ```
-ddsim --steeringFile ../simulation/steer_baseline.py \
---inputFile gen_output.edm4hep.root \
---outputFile sim_output.edm4hep.root
+ddsim --steeringFile ../simulation/steer_baseline.py --numberOfEvents 1
 ```
 
 ##Digitization
@@ -42,10 +40,14 @@ cp -r ../reconstruction/PandoraSettings/ ./
 k4run ../reconstruction/reco_steer.py
 ```
 
-##k4run Input/Output
+##Input/Output
+You can change the input/output files for sim with:
+```
+--inputFile INPUT_FILE_NAME.edm4hep.root --outputFile OUTPUT_FILE_NAME.edm4hep.root
+```
 You can change the input/output files for digi/reco with: 
 ```
---IOSvc.Input INPUT_FILE_NAME --IOSvc.Output OUTPUT_FILE_NAME
+--IOSvc.Input INPUT_FILE_NAME.edm4hep.root --IOSvc.Output OUTPUT_FILE_NAME.edm4hep.root
 ```
 
 ##Debugging
