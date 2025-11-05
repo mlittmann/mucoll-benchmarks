@@ -43,7 +43,7 @@ k4run ../reconstruction/reco_steer.py
 ##Input/Output
 You can change the input/output files for sim with:
 ```
---inputFile INPUT_FILE_NAME.edm4hep.root --outputFile OUTPUT_FILE_NAME.edm4hep.root
+--inputFiles INPUT_FILE_NAME.edm4hep.root --outputFile OUTPUT_FILE_NAME.edm4hep.root
 ```
 You can change the input/output files for digi/reco with: 
 ```
