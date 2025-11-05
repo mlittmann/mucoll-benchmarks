@@ -1,25 +1,26 @@
 from GaudiKernel.Constants import INFO, WARNING, DEBUG
 from Configurables import ACTSSeededCKFTrackingAlg, ACTSDuplicateRemoval, FilterTracksAlg, TrackTruthAlg, RefitFinal
 
-def new_CKFTracker(matFile, TGeoFile):
+def new_CKFTracker(matFile, TGeoFile, TGeoDescFile):
     """
     Create a new ACTSSeededCKFTrackingAlg instance for CKF tracking.
     """
     return ACTSSeededCKFTrackingAlg(
         "Reconstructor",
-        CKF_Chi2CutOff = 10,
-        CKF_NumMeasurementsCutOff = 1,
         MatFile = matFile,
-        RunCKF = "True",
-        SeedFinding_CollisionRegion = 3.5,
-        SeedFinding_DeltaRMax = 60,
-        SeedFinding_DeltaRMin = 2,
-        SeedFinding_MinPt = 500,
-        SeedFinding_RMax = 150,
-        SeedFinding_RadLengthPerSeed = 0.1,
-        SeedFinding_SigmaScattering = 3,
-        SeedingLayers = ["13", "2", "13", "6", "13", "10", "13", "14", "14", "2", "14", "6", "14", "10", "14", "14", "15", "2", "15", "6", "15", "10", "15", "14"],
         TGeoFile = TGeoFile,
+        TGeoDescFile = TGeoDescFile,
+        RunCKF = "True",
+        CKF_Chi2CutOff = 10,
+        SeedFinding_RMax = 150,
+        SeedFinding_MinPt = 500,
+        SeedFinding_DeltaRMin = 2,
+        SeedFinding_DeltaRMax = 60,
+        CKF_NumMeasurementsCutOff = 1,
+        SeedFinding_SigmaScattering = 3,
+        SeedFinding_CollisionRegion = 3.5,
+        SeedFinding_RadLengthPerSeed = 0.1,
+        SeedingLayers = ["13", "2", "13", "6", "13", "10", "13", "14", "14", "2", "14", "6", "14", "10", "14", "14", "15", "2", "15", "6", "15", "10", "15", "14"],
         OutputTrackCollectionName = ["AllTracks"],
         OutputSeedCollectionName = ["SeedTracks"],
         InputTrackerHitCollectionName = ["MergedTrackerHits"],
@@ -50,7 +51,7 @@ def new_track_filter():
         MaxZ0 = 10,
         NHitsInner = "0",
         NHitsOuter = "0",
-        NHitsTotal = "6",
+        NHitsTotal = "0",
         NHitsVertex = "0",
         OutputTrackCollectionName = ["SiTracks"],
         OutputLevel = INFO
