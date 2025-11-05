@@ -21,7 +21,7 @@ All of the Tracking geometries live in the `k4actstracking` directory (`.../shar
 ##Generation
 ```
 python ../generation/pgun/pgun_edm4hep.py \
--p 1 -e 10 --pdg 11 --pt 100 --theta 10 170 -- gen_output.edm4hep.root
+-p 1 -e 1 --pdg 11 --pt 100 --theta 10 170 -- gen_output.edm4hep.root
 ```
 
 ##Simulation
