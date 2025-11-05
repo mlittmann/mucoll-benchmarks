@@ -67,6 +67,13 @@ parser.add_argument(
     default="output_digi.slcio",
 )
 
+parser.add_argument(
+    "--beta",
+    help="beta (v/c) for time of flight correction",
+    type=float,
+    default=1.0
+)
+
 the_args = parser.parse_known_args()[0]
 
 algList = []
@@ -129,6 +136,7 @@ VXDBarrelDigitiser = MarlinProcessorWrapper("VXDBarrelDigitiser")
 VXDBarrelDigitiser.OutputLevel = INFO
 VXDBarrelDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 VXDBarrelDigitiser.Parameters = {
+                                 "Beta": [str(the_args.beta)],
                                  "CorrectTimesForPropagation": ["true"],
                                  "IsStrip": ["false"],
                                  "ResolutionT": ["0.03"],
@@ -137,7 +145,7 @@ VXDBarrelDigitiser.Parameters = {
                                  "SimTrackHitCollectionName": ["VertexBarrelCollection"],
                                  "SimTrkHitRelCollection": ["VXDBarrelHitsRelations"],
                                  "SubDetectorName": ["Vertex"],
-                                 "TimeWindowMax": ["0.32"],
+                                 "TimeWindowMax": ["0.15"],
                                  "TimeWindowMin": ["-0.09"],
                                  "TrackerHitCollectionName": ["VXDBarrelHits"],
                                  "UseTimeWindow": ["true"]
@@ -147,6 +155,7 @@ VXDEndcapDigitiser = MarlinProcessorWrapper("VXDEndcapDigitiser")
 VXDEndcapDigitiser.OutputLevel = INFO
 VXDEndcapDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 VXDEndcapDigitiser.Parameters = {
+                                 "Beta": [str(the_args.beta)],
                                  "CorrectTimesForPropagation": ["true"],
                                  "IsStrip": ["false"],
                                  "ResolutionT": ["0.03"],
@@ -155,7 +164,7 @@ VXDEndcapDigitiser.Parameters = {
                                  "SimTrackHitCollectionName": ["VertexEndcapCollection"],
                                  "SimTrkHitRelCollection": ["VXDEndcapHitsRelations"],
                                  "SubDetectorName": ["Vertex"],
-                                 "TimeWindowMax": ["0.32"],
+                                 "TimeWindowMax": ["0.15"],
                                  "TimeWindowMin": ["-0.09"],
                                  "TrackerHitCollectionName": ["VXDEndcapHits"],
                                  "UseTimeWindow": ["true"]
@@ -165,6 +174,7 @@ ITBarrelDigitiser = MarlinProcessorWrapper("ITBarrelDigitiser")
 ITBarrelDigitiser.OutputLevel = INFO
 ITBarrelDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 ITBarrelDigitiser.Parameters = {
+                                 "Beta": [str(the_args.beta)], 
                                 "CorrectTimesForPropagation": ["true"],
                                 "IsStrip": ["false"],
                                 "ResolutionT": ["0.06"],
@@ -173,7 +183,7 @@ ITBarrelDigitiser.Parameters = {
                                 "SimTrackHitCollectionName": ["InnerTrackerBarrelCollection"],
                                 "SimTrkHitRelCollection": ["ITBarrelHitsRelations"],
                                 "SubDetectorName": ["InnerTrackers"],
-                                "TimeWindowMax": ["0.64"],
+                                "TimeWindowMax": ["0.30"],
                                 "TimeWindowMin": ["-0.18"],
                                 "TrackerHitCollectionName": ["ITBarrelHits"],
                                 "UseTimeWindow": ["true"]
@@ -183,6 +193,7 @@ ITEndcapDigitiser = MarlinProcessorWrapper("ITEndcapDigitiser")
 ITEndcapDigitiser.OutputLevel = INFO
 ITEndcapDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 ITEndcapDigitiser.Parameters = {
+                                "Beta": [str(the_args.beta)],
                                 "CorrectTimesForPropagation": ["true"],
                                 "IsStrip": ["false"],
                                 "ResolutionT": ["0.06"],
@@ -191,7 +202,7 @@ ITEndcapDigitiser.Parameters = {
                                 "SimTrackHitCollectionName": ["InnerTrackerEndcapCollection"],
                                 "SimTrkHitRelCollection": ["ITEndcapHitsRelations"],
                                 "SubDetectorName": ["InnerTrackers"],
-                                "TimeWindowMax": ["0.64"],
+                                "TimeWindowMax": ["0.30"],
                                 "TimeWindowMin": ["-0.18"],
                                 "TrackerHitCollectionName": ["ITEndcapHits"],
                                 "UseTimeWindow": ["true"]
@@ -201,6 +212,7 @@ OTBarrelDigitiser = MarlinProcessorWrapper("OTBarrelDigitiser")
 OTBarrelDigitiser.OutputLevel = INFO
 OTBarrelDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 OTBarrelDigitiser.Parameters = {
+                                "Beta": [str(the_args.beta)],
                                 "CorrectTimesForPropagation": ["true"],
                                 "IsStrip": ["false"],
                                 "ResolutionT": ["0.06"],
@@ -209,7 +221,7 @@ OTBarrelDigitiser.Parameters = {
                                 "SimTrackHitCollectionName": ["OuterTrackerBarrelCollection"],
                                 "SimTrkHitRelCollection": ["OTBarrelHitsRelations"],
                                 "SubDetectorName": ["OuterTrackers"],
-                                "TimeWindowMax": ["0.64"],
+                                "TimeWindowMax": ["0.30"],
                                 "TimeWindowMin": ["-0.18"],
                                 "TrackerHitCollectionName": ["OTBarrelHits"],
                                 "UseTimeWindow": ["true"]
@@ -219,6 +231,7 @@ OTEndcapDigitiser = MarlinProcessorWrapper("OTEndcapDigitiser")
 OTEndcapDigitiser.OutputLevel = INFO
 OTEndcapDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 OTEndcapDigitiser.Parameters = {
+                                "Beta": [str(the_args.beta)],
                                 "CorrectTimesForPropagation": ["true"],
                                 "IsStrip": ["false"],
                                 "ResolutionT": ["0.06"],
@@ -227,7 +240,7 @@ OTEndcapDigitiser.Parameters = {
                                 "SimTrackHitCollectionName": ["OuterTrackerEndcapCollection"],
                                 "SimTrkHitRelCollection": ["OTEndcapHitsRelations"],
                                 "SubDetectorName": ["OuterTrackers"],
-                                "TimeWindowMax": ["0.64"],
+                                "TimeWindowMax": ["0.30"],
                                 "TimeWindowMin": ["-0.18"],
                                 "TrackerHitCollectionName": ["OTEndcapHits"],
                                 "UseTimeWindow": ["true"]

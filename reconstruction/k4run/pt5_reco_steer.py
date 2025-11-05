@@ -83,7 +83,7 @@ LCIOWriter_all.Parameters = {
                              "DropCollectionNames": [],
                              "DropCollectionTypes": [],
                              "FullSubsetCollections": [],
-                             "KeepCollectionNames": ["MCParticle_SiTracks", "SiTracks"], #, "MCParticle_SiTracks_Refitted", "SiTracks_Refitted", "SiTracks_Refitted_Relations"],
+                             "KeepCollectionNames": ["MCParticle_SiTracks", "SiTracks"],
                              "LCIOOutputFile": [the_args.outputFile],
                              "LCIOWriteMode": ["WRITE_NEW"]
                              }
@@ -117,7 +117,7 @@ CKFTracking.Parameters = {
     "SeedFinding_DeltaRMinBottom": ["5"],
     "SeedFinding_DeltaRMinTop": ["2"],
     "SeedFinding_ImpactMax": ["3"],
-    "SeedFinding_MinPt": ["10000"], # SIMONE SAID CHANGE THIS # MeV
+    "SeedFinding_MinPt": ["500"], # SIMONE SAID CHANGE THIS
     "SeedFinding_RMax": ["150"],
     "SeedFinding_ZMax": ["600"],
     "SeedFinding_RadLengthPerSeed": ["0.1"],
@@ -172,7 +172,7 @@ Refit.Parameters = {
                                  "InputTrackCollectionName": ["SiTracks"],
                                  "Max_Chi2_Incr": ["1.79769e+30"],
                                  "MultipleScatteringOn": ["true"],
-                                 "OutputRelationCollectionName": ["SiTracks_Refitted_Relations"],
+                                 "OutputRelationCollectionName": ["SiTracks_Refitted_Relation"],
                                  "OutputTrackCollectionName": ["SiTracks_Refitted"],
                                  "ReferencePoint": ["-1"],
                                  "SmoothOn": ["false"],
@@ -194,10 +194,10 @@ FinalTrackTruth = MarlinProcessorWrapper("FinalTrackTruth")
 FinalTrackTruth.OutputLevel = INFO
 FinalTrackTruth.ProcessorType = "TrackTruthProc"
 FinalTrackTruth.Parameters = {
-                                 "TrackCollection": ["SiTracks"], # _Refitted
+                                 "TrackCollection": ["SiTracks_Refitted"],
                                  "MCParticleCollection": ["MCParticle"],
                                  "TrackerHit2SimTrackerHitRelationName": ["VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations"],
-                                 "Particle2TrackRelationName": ["MCParticle_SiTracks"] # _Refitted
+                                 "Particle2TrackRelationName": ["MCParticle_SiTracks_Refitted"]
                                  }
 
 
@@ -370,7 +370,7 @@ algList.append(DD4hep)
 algList.append(CKFTracking)
 algList.append(TrackDeduplication)
 algList.append(FirstTrackTruth)
-# algList.append(Refit)
+#algList.append(Refit)
 algList.append(FinalTrackTruth)
 #algList.append(MergeHits)
 #algList.append(DDMarlinPandora)

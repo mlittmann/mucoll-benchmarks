@@ -41,7 +41,7 @@ evtsvc = EventDataSvc()
 
 read = LcioEvent()
 read.OutputLevel = INFO
-read.Files = ["input.slcio"]
+read.Files = ["4000_10_digi0.slcio"]
 algList.append(read)
 
 DD4hep = MarlinProcessorWrapper("DD4hep")
@@ -80,10 +80,11 @@ LCIOWriter_all = MarlinProcessorWrapper("LCIOWriter_all")
 LCIOWriter_all.OutputLevel = INFO
 LCIOWriter_all.ProcessorType = "LCIOOutputProcessor"
 LCIOWriter_all.Parameters = {
-                             "DropCollectionNames": [],
+                             "DropCollectionNames": ["ITBarrelHits", "ITBarrelHitsRelations", "ITEndcapHits", "ITEndcapHitsRelations", "OTBarrelHits", "OTBarrelHitsRelations", 
+                                                     "OTEndcapHits", "OTEndcapHitsRelations", "VXDBarrelHits", "VXDBarrelHitsRelations", "VXDEndcapHits", "VXDEndcapHitsRelations"],
                              "DropCollectionTypes": [],
-                             "FullSubsetCollections": [],
-                             "KeepCollectionNames": ["MCParticle_SiTracks", "SiTracks"], #, "MCParticle_SiTracks_Refitted", "SiTracks_Refitted", "SiTracks_Refitted_Relations"],
+                             "FullSubsetCollections": ["IBTrackerHitsConed", "IETrackerHitsConed", "OBTrackerHitsConed", "OETrackerHitsConed", "VBTrackerHitsConed", "VETrackerHitsConed"],
+                             "KeepCollectionNames": ["MCParticle_SiTracks", "SiTracks", "IBTrackerHitsConed", "IETrackerHitsConed","OBTrackerHitsConed", "OETrackerHitsConed", "VBTrackerHitsConed", "VETrackerHitsConed" ],
                              "LCIOOutputFile": [the_args.outputFile],
                              "LCIOWriteMode": ["WRITE_NEW"]
                              }
@@ -100,6 +101,97 @@ LCIOWriter_light.Parameters = {
                                "LCIOWriteMode": ["WRITE_NEW"]
                                }
 
+VXDBarrelConer = MarlinProcessorWrapper("VXDBarrelConer")
+VXDBarrelConer.OutputLevel = INFO
+VXDBarrelConer.ProcessorType = "FilterConeHits"
+VXDBarrelConer.Parameters = {
+    "MCParticleCollection": ["MCParticle"],
+    "TrackerHitInputCollections": ["VXDBarrelHits"],
+    "TrackerSimHitInputCollections": ["VertexBarrelCollection"],
+    "TrackerHitInputRelations": ["VXDBarrelHitsRelations"],
+    "TrackerHitOutputCollections": ["VBTrackerHitsConed"],
+    "TrackerSimHitOutputCollections": ["VertexBarrelCollectionConed"],
+    "TrackerHitOutputRelations": ["VBTrackerHitsRelationsConed"],
+    "DeltaRCut": ["0.8"],
+    "FillHistograms": ["false"]
+}
+
+VXDEndcapConer = MarlinProcessorWrapper("VXDEndcapConer")
+VXDEndcapConer.OutputLevel = INFO
+VXDEndcapConer.ProcessorType = "FilterConeHits"
+VXDEndcapConer.Parameters = {
+    "MCParticleCollection": ["MCParticle"],
+    "TrackerHitInputCollections": ["VXDEndcapHits"],
+    "TrackerSimHitInputCollections": ["VertexEndcapCollection"],
+    "TrackerHitInputRelations": ["VXDEndcapHitsRelations"],
+    "TrackerHitOutputCollections": ["VETrackerHitsConed"],
+    "TrackerSimHitOutputCollections": ["VertexEndcapCollectionConed"],
+    "TrackerHitOutputRelations": ["VETrackerHitsRelationsConed"],
+    "DeltaRCut": ["0.8"],
+    "FillHistograms": ["false"]
+}
+
+InnerPlanarConer = MarlinProcessorWrapper("InnerPlanarConer")
+InnerPlanarConer.OutputLevel = INFO
+InnerPlanarConer.ProcessorType = "FilterConeHits"
+InnerPlanarConer.Parameters = {
+    "MCParticleCollection": ["MCParticle"],
+    "TrackerHitInputCollections": ["ITBarrelHits"],
+    "TrackerSimHitInputCollections": ["InnerTrackerBarrelCollection"],
+    "TrackerHitInputRelations": ["ITBarrelHitsRelations"],
+    "TrackerHitOutputCollections": ["IBTrackerHitsConed"],
+    "TrackerSimHitOutputCollections": ["InnerTrackerBarrelCollectionConed"],
+    "TrackerHitOutputRelations": ["IBTrackerHitsRelationsConed"],
+    "DeltaRCut": ["0.8"],
+    "FillHistograms": ["false"]
+}
+
+InnerEndcapConer = MarlinProcessorWrapper("InnerEndcapConer")
+InnerEndcapConer.OutputLevel = INFO
+InnerEndcapConer.ProcessorType = "FilterConeHits"
+InnerEndcapConer.Parameters = {
+    "MCParticleCollection": ["MCParticle"],
+    "TrackerHitInputCollections": ["ITEndcapHits"],
+    "TrackerSimHitInputCollections": ["InnerTrackerEndcapCollection"],
+    "TrackerHitInputRelations": ["ITEndcapHitsRelations"],
+    "TrackerHitOutputCollections": ["IETrackerHitsConed"],
+    "TrackerSimHitOutputCollections": ["InnerTrackerEndcapCollectionConed"],
+    "TrackerHitOutputRelations": ["IETrackerHitsRelationsConed"],
+    "DeltaRCut": ["0.8"],
+    "FillHistograms": ["false"]
+}
+
+OuterPlanarConer = MarlinProcessorWrapper("OuterPlanarConer")
+OuterPlanarConer.OutputLevel = INFO
+OuterPlanarConer.ProcessorType = "FilterConeHits"
+OuterPlanarConer.Parameters = {
+    "MCParticleCollection": ["MCParticle"],
+    "TrackerHitInputCollections": ["OTBarrelHits"],
+    "TrackerSimHitInputCollections": ["OuterTrackerBarrelCollection"],
+    "TrackerHitInputRelations": ["OTBarrelHitsRelations"],
+    "TrackerHitOutputCollections": ["OBTrackerHitsConed"],
+    "TrackerSimHitOutputCollections": ["OuterTrackerBarrelCollectionConed"],
+    "TrackerHitOutputRelations": ["OBTrackerHitsRelationsConed"],
+    "DeltaRCut": ["0.8"],
+    "FillHistograms": ["false"]
+}
+
+OuterEndcapConer = MarlinProcessorWrapper("OuterEndcapConer")
+OuterEndcapConer.OutputLevel = INFO
+OuterEndcapConer.ProcessorType = "FilterConeHits"
+OuterEndcapConer.Parameters = {
+    "MCParticleCollection": ["MCParticle"],
+    "TrackerHitInputCollections": ["OTEndcapHits"],
+    "TrackerSimHitInputCollections": ["OuterTrackerEndcapCollection"],
+    "TrackerHitInputRelations": ["OTEndcapHitsRelations"],
+    "TrackerHitOutputCollections": ["OETrackerHitsConed"],
+    "TrackerSimHitOutputCollections": ["OuterTrackerEndcapCollectionConed"],
+    "TrackerHitOutputRelations": ["OETrackerHitsRelationsConed"],
+    "DeltaRCut": ["0.8"],
+    "FillHistograms": ["false"]
+}
+
+
 CKFTracking = MarlinProcessorWrapper("CKFTracking")
 CKFTracking.OutputLevel = INFO
 CKFTracking.ProcessorType = "ACTSSeededCKFTrackingProc"
@@ -109,7 +201,7 @@ CKFTracking.Parameters = {
     "MatFile": [the_args.MatFile],
     "PropagateBackward": ["False"],
     "RunCKF": ["True"],
-    "SeedFinding_CollisionRegion": ["6.0"],
+    "SeedFinding_CollisionRegion": ["3.5"],
     "SeedFinding_DeltaRMax": ["60"],
     "SeedFinding_DeltaRMin": ["2"],
     "SeedFinding_DeltaRMaxBottom": ["50"],
@@ -117,25 +209,23 @@ CKFTracking.Parameters = {
     "SeedFinding_DeltaRMinBottom": ["5"],
     "SeedFinding_DeltaRMinTop": ["2"],
     "SeedFinding_ImpactMax": ["3"],
-    "SeedFinding_MinPt": ["10000"], # SIMONE SAID CHANGE THIS # MeV
+    "SeedFinding_MinPt": ["500"],
     "SeedFinding_RMax": ["150"],
-    "SeedFinding_ZMax": ["600"],
+    "SeedFinding_ZMax": ["500"],
     "SeedFinding_RadLengthPerSeed": ["0.1"],
     "SeedFinding_zBottomBinLen": ["1"],
     "SeedFinding_zTopBinLen": ["1"],
     "SeedFinding_phiBottomBinLen": ["1"],
     "SeedFinding_phiTopBinLen": ["1"],
-    "SeedFinding_SigmaScattering": ["50"],
-    "SeedingLayers": ["13", "2", "13", "6", "13", "10", "13", "14",
-
-                      "14", "2", "14", "6", "14", "8", "14", "10", 
-
-                      "15", "2", "15", "6", "15", "10", "15", "14",
-
-                      "8", "2", "17", "2", "18", "2"],
+    "SeedFinding_SigmaScattering": ["3"],
+    "SeedingLayers": [
+        "13", "2", "13", "6", "13", "10", "13", "14", 
+        "14", "2", "14", "6", "14", "10", "14", "14", 
+        "15", "2", "15", "6", "15", "10", "15", "14",
+        ],
     "TGeoFile": [the_args.TGeoFile],
     "TrackCollectionName": ["AllTracks"],
-    "TrackerHitCollectionNames": ["VXDBarrelHits", "ITBarrelHits", "OTBarrelHits", "VXDEndcapHits", "ITEndcapHits", "OTEndcapHits"],
+    "TrackerHitCollectionNames": ["VBTrackerHitsConed", "VETrackerHitsConed", "IBTrackerHitsConed", "IETrackerHitsConed", "OBTrackerHitsConed", "OETrackerHitsConed"],
     "CaloFace_Radius": ["1500"],
     "CaloFace_Z": ["2307"]
 }
@@ -154,7 +244,7 @@ FirstTrackTruth.ProcessorType = "TrackTruthProc"
 FirstTrackTruth.Parameters = {
                                  "TrackCollection": ["SiTracks"],
                                  "MCParticleCollection": ["MCParticle"],
-                                 "TrackerHit2SimTrackerHitRelationName": ["VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations"],
+                                 "TrackerHit2SimTrackerHitRelationName": ["VBTrackerHitsRelationsConed", "VETrackerHitsRelationsConed", "IBTrackerHitsRelationsConed", "IETrackerHitsRelationsConed", "OBTrackerHitsRelationsConed", "OETrackerHitsRelationsConed"],
                                  "Particle2TrackRelationName": ["MCParticle_SiTracks"]
                                  }
 
@@ -172,13 +262,13 @@ Refit.Parameters = {
                                  "InputTrackCollectionName": ["SiTracks"],
                                  "Max_Chi2_Incr": ["1.79769e+30"],
                                  "MultipleScatteringOn": ["true"],
-                                 "OutputRelationCollectionName": ["SiTracks_Refitted_Relations"],
+                                 "OutputRelationCollectionName": ["SiTracks_Refitted_Relation"],
                                  "OutputTrackCollectionName": ["SiTracks_Refitted"],
                                  "ReferencePoint": ["-1"],
-                                 "SmoothOn": ["false"],
+                                 "SmoothOn": ["true"],
                                  "Verbosity": ["WARNING0"],
                                  "extrapolateForward": ["true"],
-                                 "MinClustersOnTrackAfterFit": ["3"]
+                                 "MinClustersOnTrackAfterFit": ["0"]
                                  }
 
 MergeHits = MarlinProcessorWrapper("MergeHits")
@@ -194,10 +284,10 @@ FinalTrackTruth = MarlinProcessorWrapper("FinalTrackTruth")
 FinalTrackTruth.OutputLevel = INFO
 FinalTrackTruth.ProcessorType = "TrackTruthProc"
 FinalTrackTruth.Parameters = {
-                                 "TrackCollection": ["SiTracks"], # _Refitted
+                                 "TrackCollection": ["SiTracks_Refitted"],
                                  "MCParticleCollection": ["MCParticle"],
                                  "TrackerHit2SimTrackerHitRelationName": ["VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations"],
-                                 "Particle2TrackRelationName": ["MCParticle_SiTracks"] # _Refitted
+                                 "Particle2TrackRelationName": ["MCParticle_SiTracks_Refitted"]
                                  }
 
 
@@ -367,11 +457,17 @@ algList.append(AIDA)
 algList.append(EventNumber)
 algList.append(Config)
 algList.append(DD4hep)
+algList.append(VXDBarrelConer)
+algList.append(VXDEndcapConer)
+algList.append(InnerPlanarConer)
+algList.append(InnerEndcapConer)
+algList.append(OuterPlanarConer)
+algList.append(OuterEndcapConer)
 algList.append(CKFTracking)
 algList.append(TrackDeduplication)
 algList.append(FirstTrackTruth)
-# algList.append(Refit)
-algList.append(FinalTrackTruth)
+#algList.append(Refit)
+#algList.append(FinalTrackTruth)
 #algList.append(MergeHits)
 #algList.append(DDMarlinPandora)
 #algList.append(PFOSelection)
