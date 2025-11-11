@@ -10,6 +10,7 @@ def new_CKFTracker(matFile, TGeoFile, TGeoDescFile):
         MatFile = matFile,
         TGeoFile = TGeoFile,
         TGeoDescFile = TGeoDescFile,
+        DetectorSchema = "MAIA_v0",
         RunCKF = "True",
         CKF_Chi2CutOff = 10,
         SeedFinding_RMax = 150,
