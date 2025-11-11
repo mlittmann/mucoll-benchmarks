@@ -5,8 +5,11 @@ versions so use tab-complete to fill in the ellipses:
 apptainer shell --cleanenv docker://ghcr.io/muoncollidersoft/mucoll-sim-alma9:full_gaudi_test 
 source source /opt/spack/opt/spack/.../linux-almalinux9-x86_64/mucoll-stack-.../setup.sh
 cd /path/to/k4MuCPlayground
-source setup_digireco.sh
+source setup_digireco.sh ../
 ```
+If you are somewhere other than `k4MuCPlayground` when sourcing the setup script, simply point the arguement to wherever 
+the `mucoll-benchmarks` directory exists.
+
 
 ##Set Environment Variables
 The Simulation, Digitization, and Reconstruction steps all use environment variables for the geometry.
