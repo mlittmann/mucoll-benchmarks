@@ -5,18 +5,17 @@ versions so use tab-complete to fill in the ellipses:
 apptainer shell --cleanenv docker://ghcr.io/muoncollidersoft/mucoll-sim-alma9:full_gaudi_test 
 source source /opt/spack/opt/spack/.../linux-almalinux9-x86_64/mucoll-stack-.../setup.sh
 cd /path/to/k4MuCPlayground
-source setup_digireco.sh ../
+source setup_digireco.sh ../ DETECTOR_GEOMETRY_NAME
 ```
 If you are somewhere other than `k4MuCPlayground` when sourcing the setup script, simply point the arguement to wherever 
-the `mucoll-benchmarks` directory exists.
+the `mucoll-benchmarks` directory exists. For `DETECTOR_GEOMETRY_NAME`, use the style `MAIA_v0`.
 
 
 ##Set Environment Variables
 The Simulation, Digitization, and Reconstruction steps all use environment variables for the geometry.
 `MUCOLL_GEO` (Sim, Digi, Reco)
-`MUCOLL_MATMAP`, `MUCOLL_TGEO`, `MUCOLL_TGEO_DESC` (Reco)
-Before getting started. Make sure to set these to where you want them to point like this:
-`export MUCOLL_GEO=/opt/spack/opt/spack/.../k4geo-main.../share/k4geo/MuColl/MAIA/compact/MAIA_v0/MAIA_v0.xml`
+`MUCOLL_GEOM_NAME`, `MUCOLL_MATMAP`, `MUCOLL_TGEO`, `MUCOLL_TGEO_DESC` (Reco)
+These are set by the setup script. Point them elsewhere if you wish.
 
 All of the Geometry Files (MuColl_v1, MuSIC, MAIA) live in the `k4geo` directory (`.../share/k4geo/MuColl/`). 
 All of the Tracking geometries live in the `k4actstracking` directory (`.../share/k4ActsTracking/data/`).

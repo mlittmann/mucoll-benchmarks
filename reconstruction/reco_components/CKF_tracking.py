@@ -1,16 +1,16 @@
 from GaudiKernel.Constants import INFO, WARNING, DEBUG
 from Configurables import ACTSSeededCKFTrackingAlg, ACTSDuplicateRemoval, FilterTracksAlg, TrackTruthAlg, RefitFinal
 
-def new_CKFTracker(matFile, TGeoFile, TGeoDescFile):
+def new_CKFTracker(DetectorSchema, MatFile, TGeoFile, TGeoDescFile):
     """
     Create a new ACTSSeededCKFTrackingAlg instance for CKF tracking.
     """
     return ACTSSeededCKFTrackingAlg(
         "Reconstructor",
-        MatFile = matFile,
+        MatFile = MatFile,
         TGeoFile = TGeoFile,
         TGeoDescFile = TGeoDescFile,
-        DetectorSchema = "MAIA_v0",
+        DetectorSchema = DetectorSchema,
         RunCKF = "True",
         CKF_Chi2CutOff = 10,
         SeedFinding_RMax = 150,

@@ -13,6 +13,7 @@ def makeRecoAlgList(the_args):
     # CKF Tracking
     from reco_components.CKF_tracking import new_CKFTracker, new_deduper, new_track_filter, new_track_truth, new_track_refitter
     algList.append(new_CKFTracker(
+        the_args.DetectorSchema,
         the_args.MatFile,
         the_args.TGeoFile,
         the_args.TGeoDescFile))

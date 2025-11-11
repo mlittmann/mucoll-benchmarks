@@ -14,6 +14,13 @@ def get_reco_args():
     )
 
     parser.add_argument(
+        "--DetectorSchema",
+        help="Name of the detector schema",
+        type=str,
+        default=os.environ.get("MUCOLL_GEOM_NAME", ""),
+    )
+
+    parser.add_argument(
         "--MatFile",
         help="Material maps file for tracking",
         type=str,
