@@ -23,10 +23,6 @@ else
 fi
 
 box_width=46
-echo "   ╭──────────────────────────────────────────────╮"
-echo "   │    Setting Geometry Environment Variables    │"
-echo "   ╰──────────────────────────────────────────────╯"
-
 # Set Environment variables for Geometry
 if [ $# -eq 2 ]; then
     GEOM_NAME="$2"
@@ -120,16 +116,37 @@ export MUCOLL_TGEO_DESC="$k4AT_DIR/${START_NAME}.json"
 # List them out
 echo "   ╭──────────────────────────────────────────────╮"
 echo "   │      Setting All Environment Variables:      │"
-echo "   │  Geo from k4geo, others from k4actstracking  │"
+echo "   │             MUCOLL_GEO from k4geo            │"
+echo "   │          Others from k4actstracking          │"
 echo "   ├──────────────────────────────────────────────┤"
-for var in MUCOLL_GEOM_NAME MUCOLL_GEO MUCOLL_TGEO MUCOLL_MATMAP MUCOLL_TGEO_DESC; do
+# Collect variable names and their values
+vars=(MUCOLL_GEOM_NAME MUCOLL_GEO MUCOLL_TGEO MUCOLL_MATMAP MUCOLL_TGEO_DESC)
+maxlen=0
+
+# Find max variable name length for alignment
+# Find max variable name length for alignment
+for var in "${vars[@]}"; do
+    len=${#var}
+    (( len > maxlen )) && maxlen=$len
+done
+
+# Build all lines and find the longest
+lines=()
+max_line_len=0
+for var in "${vars[@]}"; do
     value="${!var}"
-    # Strip path, keep only filename
     filename="$(basename "$value")"
-    line="${var} = ${filename}"
-    name_len=${#line}
-    pad=$(( (box_width - name_len) / 2 ))
-    printf "   │%*s%s%*s│\n" "$pad" "" "$line" "$((box_width - pad - name_len))" ""
+    line=$(printf "%-${maxlen}s = %s" "$var" "$filename")
+    lines+=("$line")
+    line_len=${#line}
+    (( line_len > max_line_len )) && max_line_len=$line_len
+done
+
+# Center the longest line, align others to equals sign
+for line in "${lines[@]}"; do
+    line_len=${#line}
+    pad=$(( (box_width - max_line_len) / 2 ))
+    printf "   │%*s%s%*s│\n" "$pad" "" "$line" "$((box_width - pad - line_len))" ""
 done
 echo "   ╰──────────────────────────────────────────────╯"
 echo ""
