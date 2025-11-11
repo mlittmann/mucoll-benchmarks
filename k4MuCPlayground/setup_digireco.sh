@@ -11,13 +11,14 @@ if [ $# -eq 1 ]; then
         MYBUILD="$1"
     fi
 else
-    MYBUILD="$(realpath "build")"
+    MYBUILD="$(realpath "mucoll-benchmarks")"
 fi
 
-if [ ! -d "${MYBUILD}" ]; then
-    echo "Install directory ${MYBUILD} does not exist - creating it..."
-    mkdir -p "${MYBUILD}" || { echo "Failed to create ${MYBUILD}"; exit 1; }
+if [ ! -d "${MYBUILD}/reconstruction" ]; then
+    echo "Steering File directory ${MYBUILD} does not exist"
+    echo "Please correctly provide its path to setup"
+else
+    export PYTHONPATH="${MYBUILD}/digitization:$PYTHONPATH"
+    export PYTHONPATH="${MYBUILD}/reconstruction:$PYTHONPATH"
 fi
 
-export PYTHONPATH="${MYBUILD}/digitization:$PYTHONPATH"
-export PYTHONPATH="${MYBUILD}/reconstruction:$PYTHONPATH"
