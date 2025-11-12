@@ -67,12 +67,12 @@ parser.add_argument(
     default="output_digi.slcio",
 )
 
-parser.add_argument(
-    "--beta",
-    help="beta (v/c) for time of flight correction",
-    type=float,
-    default=1.0
-)
+# parser.add_argument(
+#     "--beta",
+#     help="beta (v/c) for time of flight correction",
+#     type=float,
+#     default=1.0
+# )
 
 the_args = parser.parse_known_args()[0]
 
@@ -136,7 +136,7 @@ VXDBarrelDigitiser = MarlinProcessorWrapper("VXDBarrelDigitiser")
 VXDBarrelDigitiser.OutputLevel = INFO
 VXDBarrelDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 VXDBarrelDigitiser.Parameters = {
-                                 "Beta": [str(the_args.beta)],
+                                 # "Beta": [str(the_args.beta)],
                                  "CorrectTimesForPropagation": ["true"],
                                  "IsStrip": ["false"],
                                  "ResolutionT": ["0.03"],
@@ -155,7 +155,7 @@ VXDEndcapDigitiser = MarlinProcessorWrapper("VXDEndcapDigitiser")
 VXDEndcapDigitiser.OutputLevel = INFO
 VXDEndcapDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 VXDEndcapDigitiser.Parameters = {
-                                 "Beta": [str(the_args.beta)],
+                                 #"Beta": [str(the_args.beta)],
                                  "CorrectTimesForPropagation": ["true"],
                                  "IsStrip": ["false"],
                                  "ResolutionT": ["0.03"],
@@ -174,7 +174,7 @@ ITBarrelDigitiser = MarlinProcessorWrapper("ITBarrelDigitiser")
 ITBarrelDigitiser.OutputLevel = INFO
 ITBarrelDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 ITBarrelDigitiser.Parameters = {
-                                 "Beta": [str(the_args.beta)], 
+                                 #"Beta": [str(the_args.beta)], 
                                 "CorrectTimesForPropagation": ["true"],
                                 "IsStrip": ["false"],
                                 "ResolutionT": ["0.06"],
@@ -193,7 +193,7 @@ ITEndcapDigitiser = MarlinProcessorWrapper("ITEndcapDigitiser")
 ITEndcapDigitiser.OutputLevel = INFO
 ITEndcapDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 ITEndcapDigitiser.Parameters = {
-                                "Beta": [str(the_args.beta)],
+                                #"Beta": [str(the_args.beta)],
                                 "CorrectTimesForPropagation": ["true"],
                                 "IsStrip": ["false"],
                                 "ResolutionT": ["0.06"],
@@ -212,7 +212,7 @@ OTBarrelDigitiser = MarlinProcessorWrapper("OTBarrelDigitiser")
 OTBarrelDigitiser.OutputLevel = INFO
 OTBarrelDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 OTBarrelDigitiser.Parameters = {
-                                "Beta": [str(the_args.beta)],
+                                #"Beta": [str(the_args.beta)],
                                 "CorrectTimesForPropagation": ["true"],
                                 "IsStrip": ["false"],
                                 "ResolutionT": ["0.06"],
@@ -231,7 +231,7 @@ OTEndcapDigitiser = MarlinProcessorWrapper("OTEndcapDigitiser")
 OTEndcapDigitiser.OutputLevel = INFO
 OTEndcapDigitiser.ProcessorType = "DDPlanarDigiProcessor"
 OTEndcapDigitiser.Parameters = {
-                                "Beta": [str(the_args.beta)],
+                                #"Beta": [str(the_args.beta)],
                                 "CorrectTimesForPropagation": ["true"],
                                 "IsStrip": ["false"],
                                 "ResolutionT": ["0.06"],
