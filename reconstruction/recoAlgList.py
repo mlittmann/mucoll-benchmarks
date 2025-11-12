@@ -20,7 +20,7 @@ def makeRecoAlgList(the_args):
     algList.append(new_deduper())
     algList.append(new_track_filter())
     algList.append(new_track_truth())
-    algList.append(new_track_refitter())
+    # algList.append(new_track_refitter())
 
     # Track Performance Monitoring
     if the_args.doTrackPerf:
@@ -29,8 +29,8 @@ def makeRecoAlgList(the_args):
         algList.append(new_trackPerf())
 
     # Pandora PFOs
-    from reco_components.pandora import new_pandoraPFA #, new_fastJet
-    algList.append(new_pandoraPFA())
+    # from reco_components.pandora import new_pandoraPFA #, new_fastJet
+    # algList.append(new_pandoraPFA())
     # algList.append(new_fastJet())
 
     return algList
